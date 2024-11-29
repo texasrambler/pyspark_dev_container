@@ -9,5 +9,16 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bi
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends openjdk-17-jdk \
-    && conda install -y numpy pandas matplotlib seaborn pyspark xgboost
+    && conda install -y numpy pandas matplotlib seaborn pyspark
 
+# [Optional] Uncomment this section to install XGBoost.
+RUN conda install -y xgboost
+
+# [Optional] Uncomment this section to install file sync and jupyter debug kernel.
+# RUN conda install -y jupytext ipykernel
+
+# [Optional] Uncomment this section to install minimal latex for PDF export.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends texlive-xetex \
+#     texlive-fonts-recommended texlive-plain-generic \
+#     && conda install -y nbconvert pandoc
